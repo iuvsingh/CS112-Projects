@@ -39,9 +39,51 @@ def transpose(mat):
             copy=[]
     copy=[]
     return result
-
+##########################
 def mat_mul_ele(mat1, mat2):
+    result=[]
+    copy=[]
+    for i in range(len(mat1)):
+            for j in range(len(mat1[i])):
+                copy.append(mat1[i][j]*mat2[i][j])
+            result.append(copy)
+            copy=[]
 
-# def mat_mul_row_col(mat1, mat2, i, j):
+    return result
 
-# def mat_mul_mat(mat1, mat2):
+###################
+def mat_mul_row_col(mat1, mat2, i, j):
+    result=[]
+    copy=[]
+
+    if len(mat2)==len(mat1[i]):
+        for a in range(len(mat2)):
+            for b in range(len(mat2[a])):
+                if (b==j):
+                    copy.append(mat2[a][b])
+        
+        a=0
+        for a in range(len(mat1[i])):
+            result.append(copy[a]*mat1[i][a])
+
+        return result  
+
+################
+def mat_mul_mat(mat1, mat2):
+    result=[]
+    copy,copy2=[],[]
+    if len(mat2)==len(mat1[0]):
+        for a in range(len(mat2)):
+            for b in range(len(mat2[a])): 
+                copy.append(mat_mul_row_col(mat1,mat2,a,b))
+            
+            copy2=[]
+            for c in range(len(copy)):
+                sum=0
+                for d in range(len(copy[c])):
+                    sum+=copy[c][d]
+                copy2.append(sum)
+            result.append(copy2)
+            copy=[]
+    return result  
+            

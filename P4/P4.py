@@ -7,7 +7,7 @@ def mat_to_str(mat):
         result+='\n'
     
     return result
-
+######################
 def minesweeper(mat):
     copy=mat[:]
 
@@ -21,10 +21,26 @@ def minesweeper(mat):
                             ct+=1
                 mat[i][j]=ct
     copy=[]
-
+######################
 def transpose(mat):
-    
-# def mat_mul_ele(mat1, mat2):
+    result=[]
+    copy=[]
+    if (len(mat))==len(mat[0]):
+        for i in range(len(mat)):
+            for k in range(len(mat)):
+                copy.append(mat[k][i])
+            result.append(copy)
+            copy=[]
+    else:
+        for i in range(len(mat[0])):
+            for k in range(len(mat)):
+                copy.append(mat[k][i])
+            result.append(copy)
+            copy=[]
+    copy=[]
+    return result
+
+def mat_mul_ele(mat1, mat2):
 
 # def mat_mul_row_col(mat1, mat2, i, j):
 

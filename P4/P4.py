@@ -22,34 +22,8 @@ def minesweeper(mat):
                 mat[i][j]=ct
     copy=[]
 
-
-
-
-
-
-
-
-
-
-
-
-    # mines, next_spot=0,[]
-
-    # for i in range(len(mat)):
-    #     for j in range(len(mat[i])):
-    #         if mat[i][j]=='m':
-    #             mines+=1
-    # i,j=0,0
-    # for i in range(len(mat)):
-    #     for j in range(len(mat[i])):
-    #         if mat[i][j]=='x':
-    #             mat[i][j]=mines
-        
-
-                
+def transpose(mat):
     
-# def transpose(mat):
-
 # def mat_mul_ele(mat1, mat2):
 
 # def mat_mul_row_col(mat1, mat2, i, j):

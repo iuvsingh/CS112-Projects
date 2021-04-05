@@ -21,6 +21,7 @@ def minesweeper(mat):
                             ct+=1
                 mat[i][j]=ct
     copy=[]
+    
 ######################
 def transpose(mat):
     result=[]
@@ -39,6 +40,7 @@ def transpose(mat):
             copy=[]
     copy=[]
     return result
+
 ##########################
 def mat_mul_ele(mat1, mat2):
     result=[]

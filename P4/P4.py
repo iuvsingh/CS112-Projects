@@ -1,4 +1,4 @@
-def mat_to_str(mat):
+            def mat_to_str(mat):
     result=''
 
     for i in range(len(mat)):

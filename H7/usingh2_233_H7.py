@@ -36,28 +36,39 @@ class Device:
 
 
 class Outlet:
+
     def __init__(self, devices=None):
-        if self.devices==None:
-            self.devices=[]
-        else:
-            self.devices=devices
+        self.devices=[]
+        if self.devices!=None:
+            self.devices=devices[:]
+            
 
     def __str__(self):
+        flag=False
         x = "Outlet(["
         for i in range(len(self.devices)):
             if i!=len(self.devices)-1:
-                x+=self.devices + ", "
+                x+=str(self.devices[i]) + ", "
             else:
-                x+=self.devices + "])"
+                x+=str(self.devices[i]) + "])"
+                flag=True
+        if flag==False:
+             x+="])"
         return x
+
     
     def __repr__(self):
+        flag=False
         x = "Outlet(["
         for i in range(len(self.devices)):
             if i!=len(self.devices)-1:
-                x+=self.devices + ", "
+                x+=str(self.devices[i]) + ", "
             else:
-                x+=self.devices + "])"
+                x+=str(self.devices[i]) + "])"
+                flag=True
+
+        if flag==False:
+             x+="])"
         return x
 
     def __eq__(self,other):
@@ -73,18 +84,76 @@ class Outlet:
         return result
 
     def watts_now(self):
-        x=self.device
-        return x.watts
+        x=0
+        if self.devices==True:
+            x+=self.devices
+        return x
         
     def add_device(self, device):	
-        devices.append(self.device)
+        return self.devices.append(device)
 
     def remove_device(self, name):
-        for device in self.devices:
-            if device.name==name:
-                return self.devices.remove(device)
-        return None
+        flag=False
+        for i in self.devices:
+            if i.name==name:
+                flag=True
+                x = self.devices
+                self.devices.remove(i)
+                return x
+        
+        if flag==False:
+            return None
 
     def turn_off_all(self):
-        for device in self.devices:
-            device.turn_off()
+        for i in self.devices:
+            i.turn_off()
+
+class Circuit:
+    def __init__(self, outlets=None):
+        self.outlets=[]
+        if self.outlets!=None:
+            self.outlets=outlets[:]
+
+    def __str__(self):	
+        x = "Circuit(["
+        for i in range(len(self.outlets)):
+            if i!=len(self.outlets)-1:
+                x+=str(self.outlets[i]) + ", "
+            else:
+                x+=str(self.outlets[i]) + "])"
+        return x
+
+    def __repr__(self):
+        x = "Circuit(["
+        for i in range(len(self.outlets)):
+            if i!=len(self.outlets)-1:
+                x+=str(self.outlets[i]) + ", "
+            else:
+                x+=str(self.outlets[i]) + "])"
+        return x
+
+    def __eq__(self,other):
+        if self.outlets==other.outlets:
+            return True
+        else:
+            return False
+    
+    def add_outlet(self, outlet):
+        return self.outlets.append(outlet)
+
+    def max_watts(self):	
+        result=0
+        for i in self.outlets:
+            result+=i.watts
+        return result
+
+    def watts_now(self):
+        x=0
+        if self.outlets==True:
+            x+=self.outlets
+        return x
+
+    def turn_off_all(self):	
+        for i in self.outlets:
+            i.turn_off()
+    
